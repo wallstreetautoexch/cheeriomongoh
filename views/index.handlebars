@@ -1,0 +1,81 @@
+<div id=header>
+
+<h1>Burger City!</h1>
+</div>
+
+<div id=leftSidebar>
+
+<h2>Burgers not Eaten!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.burger_name}}
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Finished Eating It!</button>
+        </form>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+</div>
+
+<div  id=picture>
+  <img src="https://tse2.mm.bing.net/th?id=OIP.b0dfW-FAt9hH0r-Pyu4PMwEsDL&pid=15.1&P=0&w=283&h=193">
+</div>
+
+<div id=rightSidebar>
+
+<h2>Burgers Eaten!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if this.devoured}}
+      <li>
+        {{this.burger_name}}
+
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="false">
+          <button type="submit">Throw it UP!</button>
+        </form>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+</div>
+
+<div id=addBurger>
+
+<h3>Add a Burger</h3>
+<form class="create-update-form" action="/" method="POST">
+
+  <div class="form-group">
+    <label for="ba">Burger Name:</label>
+    <input type="text" id="ba" name="burger_name">
+  </div>
+
+  <div class="form-group">
+    <label for="dvou">Devoured ?</label><br>
+    <input type="radio" name="devoured" value="false" checked> Not Devoured!<br>
+    <input type="radio" name="devoured" value="true" checked> Devoured
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
